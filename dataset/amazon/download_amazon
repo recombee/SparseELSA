@@ -1,0 +1,145 @@
+
+mkdir amazon_fashion
+wget -P amazon_fashion https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_AMAZON_FASHION.json.gz
+wget -P amazon_fashion https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/AMAZON_FASHION.csv
+gunzip amazon_fashion/meta_AMAZON_FASHION.json.gz
+
+mkdir all_beauty
+wget -P all_beauty https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_All_Beauty.json.gz
+wget -P all_beauty https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/All_Beauty.csv
+gunzip all_beauty/meta_All_Beauty.json.gz
+
+mkdir appliances
+wget -P appliances https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Appliances.json.gz
+wget -P appliances https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Appliances.csv
+gunzip appliances/meta_Appliances.json.gz
+
+mkdir arts_crafts_and_sewing
+wget -P arts_crafts_and_sewing https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Arts_Crafts_and_Sewing.json.gz
+wget -P arts_crafts_and_sewing https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Arts_Crafts_and_Sewing.csv
+gunzip arts_crafts_and_sewing/meta_Arts_Crafts_and_Sewing.json.gz
+
+mkdir automotive
+wget -P automotive https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Automotive.json.gz
+wget -P automotive https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Automotive.csv
+gunzip automotive/meta_Automotive.json.gz
+
+mkdir books
+wget -P books https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Books.json.gz
+wget -P books https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Books.csv
+gunzip books/meta_Books.json.gz
+
+mkdir cds_and_vinyl
+wget -P cds_and_vinyl https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_CDs_and_Vinyl.json.gz
+wget -P cds_and_vinyl https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/CDs_and_Vinyl.csv
+gunzip cds_and_vinyl/meta_CDs_and_Vinyl.json.gz
+
+mkdir cell_phones_and_accessories
+wget -P cell_phones_and_accessories https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Cell_Phones_and_Accessories.json.gz
+wget -P cell_phones_and_accessories https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Cell_Phones_and_Accessories.csv
+gunzip cell_phones_and_accessories/meta_Cell_Phones_and_Accessories.json.gz
+
+mkdir clothing_shoes_and_jewelry
+wget -P clothing_shoes_and_jewelry https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Clothing_Shoes_and_Jewelry.json.gz
+wget -P clothing_shoes_and_jewelry https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Clothing_Shoes_and_Jewelry.csv
+gunzip clothing_shoes_and_jewelry/meta_Clothing_Shoes_and_Jewelry.json.gz
+
+mkdir digital_music
+wget -P digital_music https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Digital_Music.json.gz
+wget -P digital_music https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Digital_Music.csv
+gunzip digital_music/meta_Digital_Music.json.gz
+
+mkdir electronics
+wget -P electronics https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Electronics.json.gz
+wget -P electronics https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Electronics.csv
+gunzip electronics/meta_Electronics.json.gz
+
+mkdir gift_cards
+wget -P gift_cards https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Gift_Cards.json.gz
+wget -P gift_cards https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Gift_Cards.csv
+gunzip gift_cards/meta_Gift_Cards.json.gz
+
+mkdir grocery_and_gourmet_food
+wget -P grocery_and_gourmet_food https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Grocery_and_Gourmet_Food.json.gz
+wget -P grocery_and_gourmet_food https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Grocery_and_Gourmet_Food.csv
+gunzip grocery_and_gourmet_food/meta_Grocery_and_Gourmet_Food.json.gz
+
+mkdir home_and_kitchen
+wget -P home_and_kitchen https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Home_and_Kitchen.json.gz
+wget -P home_and_kitchen https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Home_and_Kitchen.csv
+gunzip home_and_kitchen/meta_Home_and_Kitchen.json.gz
+
+mkdir industrial_and_scientific
+wget -P industrial_and_scientific https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Industrial_and_Scientific.json.gz
+wget -P industrial_and_scientific https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Industrial_and_Scientific.csv
+gunzip industrial_and_scientific/meta_Industrial_and_Scientific.json.gz
+
+mkdir kindle_store
+wget -P kindle_store https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Kindle_Store.json.gz
+wget -P kindle_store https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Kindle_Store.csv
+gunzip kindle_store/meta_Kindle_Store.json.gz
+
+mkdir luxury_beauty
+wget -P luxury_beauty https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Luxury_Beauty.json.gz
+wget -P luxury_beauty https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Luxury_Beauty.csv
+gunzip luxury_beauty/meta_Luxury_Beauty.json.gz
+
+mkdir magazine_subscriptions
+wget -P magazine_subscriptions https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Magazine_Subscriptions.json.gz
+wget -P magazine_subscriptions https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Magazine_Subscriptions.csv
+gunzip magazine_subscriptions/meta_Magazine_Subscriptions.json.gz
+
+mkdir movies_and_tv
+wget -P movies_and_tv https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Movies_and_TV.json.gz
+wget -P movies_and_tv https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Movies_and_TV.csv
+gunzip movies_and_tv/meta_Movies_and_TV.json.gz
+
+mkdir musical_instruments
+wget -P musical_instruments https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Musical_Instruments.json.gz
+wget -P musical_instruments https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Musical_Instruments.csv
+gunzip musical_instruments/meta_Musical_Instruments.json.gz
+
+mkdir office_products
+wget -P office_products https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Office_Products.json.gz
+wget -P office_products https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Office_Products.csv
+gunzip office_products/meta_Office_Products.json.gz
+
+mkdir patio_lawn_and_garden
+wget -P patio_lawn_and_garden https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Patio_Lawn_and_Garden.json.gz
+wget -P patio_lawn_and_garden https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Patio_Lawn_and_Garden.csv
+gunzip patio_lawn_and_garden/meta_Patio_Lawn_and_Garden.json.gz
+
+mkdir pet_supplies
+wget -P pet_supplies https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Pet_Supplies.json.gz
+wget -P pet_supplies https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Pet_Supplies.csv
+gunzip pet_supplies/meta_Pet_Supplies.json.gz
+
+mkdir prime_pantry
+wget -P prime_pantry https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Prime_Pantry.json.gz
+wget -P prime_pantry https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Prime_Pantry.csv
+gunzip prime_pantry/meta_Prime_Pantry.json.gz
+
+mkdir software
+wget -P software https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Software.json.gz
+wget -P software https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Software.csv
+gunzip software/meta_Software.json.gz
+
+mkdir sports_and_outdoors
+wget -P sports_and_outdoors https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Sports_and_Outdoors.json.gz
+wget -P sports_and_outdoors https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Sports_and_Outdoors.csv
+gunzip sports_and_outdoors/meta_Sports_and_Outdoors.json.gz
+
+mkdir tools_and_home_improvement
+wget -P tools_and_home_improvement https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Tools_and_Home_Improvement.json.gz
+wget -P tools_and_home_improvement https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Tools_and_Home_Improvement.csv
+gunzip tools_and_home_improvement/meta_Tools_and_Home_Improvement.json.gz
+
+mkdir toys_and_games
+wget -P toys_and_games https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Toys_and_Games.json.gz
+wget -P toys_and_games https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Toys_and_Games.csv
+gunzip toys_and_games/meta_Toys_and_Games.json.gz
+
+mkdir video_games
+wget -P video_games https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/metaFiles2/meta_Video_Games.json.gz
+wget -P video_games https://datarepo.eng.ucsd.edu/mcauley_group/data/amazon_v2/categoryFilesSmall/Video_Games.csv
+gunzip video_games/meta_Video_Games.json.gz

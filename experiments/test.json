@@ -1,0 +1,8 @@
+{
+    "experiment_top_pop.py":    {
+        "--dataset": "amazon-small",
+        "--seed": ["41"], 
+        "--validation": "false", 
+        "--flag": "test"
+    }
+}
