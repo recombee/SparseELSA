@@ -42,7 +42,7 @@ To evaluate a model you should do something like this:
 ```python
 test_evaluator = Evaluation(dataset, "test")
 test_df_preds = model.predict_df(test_evaluator.test_src)
-test_results=val_evaluator(test_df_preds)
+test_results=test_evaluator(test_df_preds)
 ```
 
 `test_results` is dictionary of {'metric_name':metric_value}
