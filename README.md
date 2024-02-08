@@ -1,8 +1,11 @@
 # SparseELSA
-
-Forked from Recommender System Datasets (and Baselines) 
-
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC_BY--NC_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
+
+Forked from [Recommender System Datasets (and Baselines)](https://github.com/zombak79/recsysdata)
+
+
+
+
 
 1. In the datasets/amazon directory run `download_amazon`, unpack `dups.zip` and run `preprocess.py`, `merge_ratings.py` and `merge_items.py`.
 2. Use `experiment_*.py` to run experiments, for example `python experiment_knn.py --dataset amazon` will run knn on amazon dataset.
