@@ -11,7 +11,7 @@ from keras.src.backend.torch.core import *
 
 import scipy.sparse
 
-from layers import LayerELSA, LayerANNA
+from layers import LayerELSA, SparseLayerELSA 
 from datasets.pydatasets import BasicRecSysDataset, PredictDfRecSysDataset, SparseRecSysDataset, SparseTransposedRecSysDataset
 from datasets.utils import *
 
@@ -108,19 +108,21 @@ class SparseKerasELSA(keras.models.Model):
     """
     Same as KerasELSA but receives data from SparseRecSysDataset - data is batch of user vectors + slicer for nonzero entries
     """
-    def __init__(self, n_items, n_dims, items_idx, device):
+    def __init__(self, n_items, n_dims, items_idx, device, top_k=1500):
         super().__init__()
-        self.A = torch.nn.Parameter(torch.nn.init.xavier_uniform_(torch.empty([n_items, n_dims])))
+        #self.A = torch.nn.Parameter(torch.nn.init.xavier_uniform_(torch.empty([n_items, n_dims])))
         self.device = device
-        self.ELSA = LayerELSA(n_items, n_dims, device=device)
+        self.ELSA = SparseLayerELSA(n_items, n_dims, device=device)
         self.items_idx = items_idx
         self.ELSA.build()
         self(np.zeros([1,n_items]))
+        self.finetuning = False
+        self.top_k = top_k
 
     def call(self, x):
         return self.ELSA(x)
 
-    def train_step(self, data):
+    def forward_step(self, data):
         # Unpack the data. Its structure depends on your model and
         # on what you pass to `fit()`.
         
@@ -155,7 +157,41 @@ class SparseKerasELSA(keras.models.Model):
             negative_slicer = negative_slicer.to(self.device)
         
         slicer=slicer.to(self.device)
+
+        return x, y, slicer, negative_slicer
         
+    def train_step(self, data):
+        
+        #x, y, slicer, negative_slicer = self.forward_step(data)
+        # Unpack the data. Its structure depends on your model and
+        # on what you pass to `fit()`.
+        
+        if len(data)==2:
+            full_x = None
+            a,b = data
+            x, y = a
+            y = torch.hstack((x,y))
+            slicer, negative_slicer = b
+                
+        elif len(data)==3:
+            full_x, slicer, negative_slicer = data
+        else:
+            full_x, slicer = data
+            negative_slicer = None
+            
+        
+        #full_x=full_x.to(self.device)
+        if full_x is not None:
+            if negative_slicer is not None:
+                y = full_x[:, negative_slicer]
+            else:
+                y = full_x
+
+            x = full_x[:, slicer]
+
+
+            x = x.to(self.device)
+            y = y.to(self.device)
         x_out=y
         
         #print(x.shape, y.shape, slicer.shape)
@@ -187,7 +223,13 @@ class SparseKerasELSA(keras.models.Model):
         xAAT = torch.matmul(xA, A_negative_slicer.T)
         
         y_pred = keras.activations.relu(xAAT - x_out, max_value=6)
+
+        if self.finetuning:
+            val, inds = torch.topk(y_pred, self.top_k)
+            y = torch.gather(y,1,inds)
+            y_pred = val
             
+        
         loss = self.compute_loss(y=y, y_pred=y_pred)
         
         # Call torch.Tensor.backward() on the loss to compute gradients
@@ -224,7 +266,7 @@ class SparseKerasELSA(keras.models.Model):
 
         #x = get_sparse_matrix_from_dataframe(df, item_indices=self.items_idx)
 
-        data = PredictDfRecSysDataset(df, self.items_idx)
+        data = PredictDfRecSysDataset(df, self.items_idx, batch_size=1024)
 
         dfs = []
         imin = 0

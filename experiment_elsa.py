@@ -1,6 +1,7 @@
 import os
 import torch
 import argparse
+import subprocess
 
 parser = argparse.ArgumentParser()
 
@@ -40,6 +41,9 @@ parser.add_argument("--max_queue_size", default=20, type=int, help="maximum size
 
 parser.add_argument("--flag", default="none", type=str, help="flag for distinction of experiments, default none")
 
+parser.add_argument("--tuning", default="False", type=str, help="flag for using finetuning, default false")
+parser.add_argument("--top_k", default=1500, type=int, help="Top k of prdictions considered during training. Works only in finetuning mode.")
+
 
 args = parser.parse_args([] if "__file__" not in globals() else None)
 
@@ -51,19 +55,23 @@ DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 import math 
 import keras
 
-from ptELSA import *
 from datasets.utils import *
 
 from optimizers import NadamS
 from schedules import LinearWarmup
 from datasets.pydatasets import BasicRecSysDataset, PredictDfRecSysDataset, SparseRecSysDataset, SparseRecSysDatasetWithNegatives
 
-from layers import LayerELSA, LayerANNA
-from models import KerasANNA, KerasELSA, SparseKerasELSA, SparseKerasANNA, NMSE
+from layers import LayerELSA
+from models import KerasELSA, SparseKerasELSA, NMSE
 
 from config import config
 
 from time import time
+
+
+
+
+
 
 if __name__ == "__main__":
     folder = f"results/{str(pd.Timestamp('today'))} {9*int(1e6)+np.random.randint(999999)}".replace(" ", "_")
@@ -139,6 +147,10 @@ if __name__ == "__main__":
         model.to(DEVICE)
         model.compile(optimizer=NadamS(learning_rate=lr, weight_decay=args.weight_decay), loss=NMSE, metrics=[keras.metrics.CosineSimilarity()])
         model.train_step(data_loader[0])
+        if args.tuning=="True":
+            print(f"Using finetuning with top_k={args.top_k}")
+            model.top_k = args.top_k
+            model.finetuning = True
     fits = []
     val_logs = []
     train_time=0
@@ -183,6 +195,15 @@ if __name__ == "__main__":
     
     pd.Series(train_time).to_csv(f"{folder}/timer.csv")
     print("timer written")
+
+    out = subprocess.check_output(
+        [
+            "nvidia-smi"
+        ]
+    )
+    
+    with open(os.path.join(f'{args.dataset}_{args.flag}.log'), 'w') as f:
+        f.write(out.decode("utf-8"))
     
     
     
